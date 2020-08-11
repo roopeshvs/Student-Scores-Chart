@@ -24,9 +24,9 @@ def get_scores(request, id):
 @api_view(["POST"])
 @csrf_exempt
 def put_score(request):
-    student_id = request.POST['student_id']
-    name = request.POST['name']
-    score = request.POST['score']
+    student_id = request.POST.get('student_id')
+    name = request.POST.get('name')
+    score = request.POST.get('score')
     try:
         StudentModel.objects.get_or_create(student_id=student_id, name=name)
     except:
