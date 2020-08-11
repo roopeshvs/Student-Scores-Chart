@@ -147,7 +147,7 @@ Activate the Python Virtual Environment
 
 Setup the Environment Variables in Scores/settings.py
 
-* SECRET_KEY = <Your-Secret-Key-Goes-Here> 
+* SECRET_KEY = 'Your-Secret-Key-Goes-Here'
 
 * DEBUG = True
 
