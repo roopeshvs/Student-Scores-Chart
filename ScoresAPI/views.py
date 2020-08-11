@@ -27,13 +27,10 @@ def put_score(request):
     student_id = request.POST.get('student_id')
     name = request.POST.get('name')
     score = request.POST.get('score')
-    if score>=0 and score<=100: #Valid Scores
-        try:
-            StudentModel.objects.get_or_create(student_id=student_id, name=name)
-        except:
-            return Response({'What Happened?':'Axe Happened'},status=status.HTTP_404_NOT_FOUND)
-            # The Response message is a joke instead of a normal error message. Take it as such.
-        ScoreModel.objects.create(s_id_id=student_id,marks=score)
-        return Response({'What Happened?':'Successfully Created'}, status=status.HTTP_201_CREATED)
-    else:
+    try:
+        StudentModel.objects.get_or_create(student_id=student_id, name=name)
+    except:
         return Response({'What Happened?':'Axe Happened'},status=status.HTTP_404_NOT_FOUND)
+        # The Response message is a joke instead of a normal error message. Take it as such.
+    ScoreModel.objects.create(s_id_id=student_id,marks=score)
+    return Response({'What Happened?':'Successfully Created'}, status=status.HTTP_201_CREATED)
